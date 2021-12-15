@@ -1,28 +1,42 @@
+import {useState} from 'react'
 import './App.css';
 
+let initialState = [
+  {
+    id: 1,
+    descricao: "Primeira Atividade"
+  },
+  {
+    id: 2,
+    descricao: "Segunda Atividade"
+  }
+
+
+]
+
+
 function App() {
-  const atividade = [
-    {
-      id: 1,
-      descricao: "Primeira Atividade"
-    },
-    {
-      id: 1,
-      descricao: "Segunda Atividade"
-    }
+  const  [atividades, setatividades] = useState(initialState) 
+  function addAtividade(e){
+    e.preventDefault();
 
+    const atividade = {
+      id: document.getElementById('id').value,
+      descricao: document.getElementById('descricao').value, 
+    };
+    setatividades([...atividades, {...atividade}]);
+  };
 
-  ];
   return (
     <>
       <form>
           <input id='id' type='text' placeholder='id'></input>
           <input id='descricao' type='text' placeholder='descricao'></input>
-          <button>+ Atividade</button>
+          <button onClick={addAtividade}>+ Atividade</button>
       </form>
       <div className="mt-3">
           <ul className="list-group">
-            {atividade.map(ativ => (
+            {atividades.map(ativ => (
               <li key={ativ.id} className="list-group-item">{ativ.id} - {ativ.descricao}</li>     
             ))}
           </ul>
