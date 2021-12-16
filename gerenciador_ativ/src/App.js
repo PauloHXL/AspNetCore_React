@@ -29,17 +29,43 @@ function App() {
 
   return (
     <>
-      <form>
-          <input id='id' type='text' placeholder='id'></input>
-          <input id='descricao' type='text' placeholder='descricao'></input>
-          <button onClick={addAtividade}>+ Atividade</button>
+      <form className="row g-3">
+        <div className="col-md-6">
+          <label for="inputEmail4" className="form-label">ID</label>
+          <input id='id' type="text" className="form-control" ></input>
+        </div>
+        <div className="col-md-6">
+          <label for="inputEmail4" className="form-label">Descrição</label>
+          <input id='descricao' type="text" className="form-control" ></input>
+        </div>
+        <hr />
+        <div className="col-12">
+          <button className='btn btn-outline-secondary' onClick={addAtividade}>+ Atividade</button>
+       </div>
+          
       </form>
       <div className="mt-3">
-          <ul className="list-group">
+          
             {atividades.map(ativ => (
-              <li key={ativ.id} className="list-group-item">{ativ.id} - {ativ.descricao}</li>     
+            
+        <div className="card mb-2 shadow-sm">
+           <div key={ativ.id} className="card-body">
+             <div className="d-flex justify-content-between">
+               <h5 className="card-title">
+               <span className="badge rounded-pill bg-secondary me-1">{ativ.id}</span>
+                - título
+               </h5>
+               <h6>
+                    Prioridade: Normal
+               </h6>
+             </div>
+            <p className="card-text">
+              {ativ.id} - {ativ.descricao}
+            </p>
+           </div>
+        </div>    
             ))}
-          </ul>
+         
       </div>
     </>
   );
