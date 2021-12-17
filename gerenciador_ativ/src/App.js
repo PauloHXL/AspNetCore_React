@@ -56,12 +56,25 @@ function App() {
                 - título
                </h5>
                <h6>
-                    Prioridade: Normal
+                    Prioridade: 
+                    <span className='ms-1 text-black'>
+                      <i className="me-1 far fa-frown"></i>
+                      Alta
+                    </span>
+                    
                </h6>
              </div>
             <p className="card-text">
               {ativ.id} - {ativ.descricao}
             </p>
+            <div className='d-flex justify-content-end pt-2 m-0 border-top'>
+              <button className='btn btn-sm btn-outline-primary me-2 '>
+                Editar
+              </button>
+              <button className='btn btn-sm btn-outline-danger'>
+                Deletar
+              </button>
+            </div>
            </div>
         </div>    
             ))}
